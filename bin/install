@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "lib/utils.bash"
+
+install_path="$ASDF_INSTALL_PATH/bin/kyverno"
+
+echo "Creating bin directory"
+mkdir -p $install_path
+
+echo "Installing kyverno-cli to ${install_path}"
+tar -xzvf $(get_download_path) -C $install_path

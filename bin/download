@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e 
+set -o pipefail
+
+source "lib/utils.bash"
+
+file_name="$(get_file_name)"
+
+#https://github.com/kyverno/kyverno/releases/download/v1.5.2/kyverno-cli_v1.5.2_linux_x86_64.tar.gz
+download_url="$(get_download_url $file_name)"
+
+download_path="$(get_download_path $file_name)"
+
+echo "Downloading kyverno-cli from ${download_url} to ${download_path}"
+curl -Lo $download_path $download_url
