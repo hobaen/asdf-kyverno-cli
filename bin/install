@@ -10,7 +10,7 @@ echo "Creating bin directory"
 mkdir -p $install_path
 
 echo "Unpacking tar Archive"
-tar -xzvf $(get_download_path) 
+tar -xzvf $(get_download_path) kyverno
 
 echo "Installing kyverno-cli to ${install_path}"
 mv kyverno ${install_path}
