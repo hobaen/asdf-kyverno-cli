@@ -4,8 +4,20 @@ set -euo pipefail
 
 version=$ASDF_INSTALL_VERSION
 
+get_platform() {
+  uname | tr '[:upper:]' '[:lower:]'
+}
+
+get_arch() {
+  arch=$(uname -m)
+  case "$arch" in
+    aarch64) echo arm64 ;;
+    *) echo "$arch" ;;
+  esac
+}
+
 get_file_name() {
-  echo "kyverno-cli_v${version}_$(uname | tr '[:upper:]' '[:lower:]')_x86_64.tar.gz"
+  echo "kyverno-cli_v${version}_$(get_platform)_$(get_arch).tar.gz"
 }
 
 get_download_path() {
